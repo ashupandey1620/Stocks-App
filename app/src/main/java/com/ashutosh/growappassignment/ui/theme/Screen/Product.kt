@@ -88,6 +88,7 @@ fun Product(
         is NetworkResult.Loading -> {
 
             LoadingScreen()
+
         }
         is NetworkResult.Success -> {
             val data = (companyOverViewState as NetworkResult.Success<CompanyOverViewResponse>).data
