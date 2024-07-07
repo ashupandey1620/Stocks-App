@@ -27,7 +27,7 @@ https://github.com/ashupandey1620/Stocks-App-Assessment/assets/98882610/6557e6b8
 5. Light/Dark Theme in the Application
 6. Added More Endpoints for News
 
-#Tech Stack Used - 
+# Tecg Stack Used -
 1. Kotlin
 2. Jetpack Compose
 3. Room DB for Caching Data
