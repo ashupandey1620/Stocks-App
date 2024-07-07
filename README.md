@@ -26,3 +26,11 @@ https://github.com/ashupandey1620/Stocks-App-Assessment/assets/98882610/6557e6b8
 4. Proper Optimisation of Network Bandwith and Assets.
 5. Light/Dark Theme in the Application
 6. Added More Endpoints for News
+
+#Tech Stack Used - 
+1. Kotlin
+2. Jetpack Compose
+3. Room DB for Caching Data
+4. Retrofit for Network Calls
+5. Work Manager for Data Expiration
+6. Coroutines and Flows
