@@ -1,6 +1,8 @@
 package com.ashutosh.growappassignment
 
 import android.app.Application
+import android.content.Context
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import androidx.room.Room
 import com.ashutosh.growappassignment.Data.StockDatabase
 import dagger.hilt.android.HiltAndroidApp
@@ -20,5 +22,6 @@ class StockApp: Application() {
             StockDatabase::class.java, "stock_database"
         ).build()
     }
+
 
 }

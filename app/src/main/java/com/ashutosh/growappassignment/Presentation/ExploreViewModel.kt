@@ -1,9 +1,7 @@
 package com.ashutosh.growappassignment.Presentation
 
+
 import android.util.Log
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,15 +13,10 @@ import com.ashutosh.growappassignment.Data.TopLoser.TopLoserD
 import com.ashutosh.growappassignment.NetworkModule.Model.TicketSearch.TicketSearch
 import com.ashutosh.growappassignment.NetworkModule.Model.TicketSearch.TicketSearchResponse
 import com.ashutosh.growappassignment.NetworkModule.Model.TopGainAndLoss.TopGainAndLossResponse
-import com.ashutosh.growappassignment.NetworkModule.Model.TopGainAndLoss.TopGainer
-
-import com.ashutosh.growappassignment.NetworkModule.Model.TopGainAndLoss.TopLoser
 import com.ashutosh.growappassignment.NetworkModule.NetworkResult
 import com.ashutosh.growappassignment.R
 import com.ashutosh.growappassignment.StockApp
 import com.ashutosh.growappassignment.Util.Constants
-
-
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,6 +25,8 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import java.util.Calendar
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -101,6 +96,10 @@ class ExploreViewModel @Inject constructor(private val repository: Repository): 
 
                             //Top Gainer Update
 
+                            val calendar: Calendar = Calendar.getInstance()
+                            calendar.add(Calendar.DAY_OF_YEAR , -3)
+                            val expirationLimit: Date = calendar.getTime()
+
                             val topGainer = response.top_gainers.map { data ->
 
                                 TopGainerD(
@@ -109,7 +108,8 @@ class ExploreViewModel @Inject constructor(private val repository: Repository): 
                                     data.change_percentage,
                                     data.change_amount,
                                     data.volume,
-                                    icons.random()
+                                    icons.random(),
+                                    expirationLimit.toString()
                                 )
 
                             }
@@ -126,7 +126,8 @@ class ExploreViewModel @Inject constructor(private val repository: Repository): 
                                     data.change_percentage,
                                     data.change_amount,
                                     data.volume,
-                                    icons.random()
+                                    icons.random(),
+                                    expirationLimit.toString()
                                 )
                             }
                             insertOrUpdateTopLoserInDatabase(topLoser)
